@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- Binding todos to Todos Html attribute: Passing todo data to Todo component as Props-->
-    <Todos v-bind:todos="todos" />
+    <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo" />
   </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
         {
           id: 2,
           title: "Todo Two",
-          completed: false,
+          completed: true,
         },
         {
           id: 3,
@@ -33,6 +33,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    deleteTodo(id) {
+      this.todos = this.todos.filter((todo) => todo.id !== id);
+    },
   },
 };
 </script>

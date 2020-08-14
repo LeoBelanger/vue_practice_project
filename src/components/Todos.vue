@@ -2,7 +2,8 @@
   <div>
     <!-- Loop through todos passed in as props. Remember to add key -->
     <div v-bind:key="todo.id" v-for="todo in todos">
-      <TodoItem v-bind:todo="todo" />
+      <!-- Binding todo data to TodoItem attribute as well as catch and re-emit delete event to App -->
+      <TodoItem v-bind:todo="todo" v-on:del-todo="$emit('del-todo', todo.id)" />
     </div>
   </div>
 </template>
